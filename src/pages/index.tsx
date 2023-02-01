@@ -56,7 +56,10 @@ export const getStaticProps: GetStaticProps = async () => {
       id: p.id,
       name: p.name,
       imageUrl: p.images[0],
-      price: price.unit_amount,
+      price: new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }).format(price.unit_amount / 100),
     };
   });
 
